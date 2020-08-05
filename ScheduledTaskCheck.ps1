@@ -330,7 +330,7 @@ foreach($server in $servername)
     {
  
  #Check to see if failed ignoring never run and currently running
-        elseif(($task.LastTaskResult -ne 0) -and ($task.LastTaskResult -ne 267011) -and ($task.LastTaskResult -ne 267009) -and ($task.State -ne 4))
+        if(($task.LastTaskResult -ne 0) -and ($task.LastTaskResult -ne 267011) -and ($task.LastTaskResult -ne 267009) -and ($task.State -ne 4))
         {
             $failedTasks += $task
         }
