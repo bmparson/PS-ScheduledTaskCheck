@@ -350,7 +350,7 @@ foreach($server in $servername)
             {
                 $task.TimesFailed = ($previousFailedTasks[$index].TimesFailed -as [int]) + 1
                 $task.MsgSent = $previousFailedTasks[$index].MsgSent
-                $task.ShutdownStateCount = $previousFailedTasks[$index].ShutdownStateCount
+                $task.ShutdownStateCount = ($previousFailedTasks[$index].ShutdownStateCount -as [int]) + 1
             }
             else
             {
@@ -408,5 +408,5 @@ foreach($server in $servername)
  }
  if($shutdownMsg -ne $null)
  {
-    send-mailmessage -From "email@domain.com" -to @("email1@domain.com", "email2@domain.com") -subject "Scheduled Task(s) in System Shutdown in Progress State" -BodyAsHtml $msg -smtpserver "smtpserver.domain.com"
+    send-mailmessage -From "email@domain.com" -to @("email1@domain.com", "email2@domain.com") -subject "Scheduled Task(s) in System Shutdown in Progress State" -BodyAsHtml $shutdownMsg -smtpserver "smtpserver.domain.com"
  }
